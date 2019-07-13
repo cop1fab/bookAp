@@ -1,23 +1,18 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import routes from './routes/index';
+import usersRouter from './routes/users/auth';
+import db from './models/db';
 
 const app = express();
 
-app.use(bodyParser.urlencoded({
-  extended: false,
-})); // for only passing strings and arrays
-app.use(bodyParser.json()); // accept json data
+db.connect();
 
-// redirect to the routes
-app.use('/api/v1/', routes);
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  }),
+);
 
-// accept static files
-app.use(express.static(`${__dirname}/`));
-
-app.use((req, res) => res.status(404).json({
-  status: 404,
-  message: 'URL not found',
-}));
+app.use('/auth', usersRouter);
 
 export default app;
