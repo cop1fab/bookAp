@@ -4,7 +4,12 @@
   "description": "This is a simple web APP used by libraries to store books ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node ./src/server.js",
+    "dev": "nodemon --exec babel-node ./src/server.js",
+    "test": "nyc --reporter=html --reporter=text mocha src/test/*js --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "showCoverage": "start coverage/lcov-report/index.html",
+    "createTables": "babel-node ./src/models/tables drop && babel-node ./src/models/tables create"
   },
   "repository": {
     "type": "git",
@@ -17,6 +22,37 @@
   },
   "homepage": "https://github.com/cop1fab/bookAp#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cloudinary": "^1.14.0",
+    "connect-multiparty": "^2.2.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "joi-date-extensions": "^1.2.0",
+    "joi-image-extension": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "make-runnable": "^1.3.6",
+    "mocha": "^6.1.4",
+    "pg": "^7.11.0",
+    "swagger-jsdoc": "^3.2.9",
+    "swagger-ui-express": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.19.0",
+    "nyc": "^14.1.1"
   }
 }
