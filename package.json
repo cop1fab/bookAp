@@ -1,0 +1,22 @@
+{
+  "name": "bookap",
+  "version": "1.0.0",
+  "description": "This is a simple web APP used by libraries to store books ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cop1fab/bookAp.git"
+  },
+  "author": "Dr. Copain Fabrice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cop1fab/bookAp/issues"
+  },
+  "homepage": "https://github.com/cop1fab/bookAp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
